@@ -1,0 +1,59 @@
+@font-face {
+    font-family: Cinzel;
+    src: url(./Cinzel/Cinzel-VariableFont_wght.ttf) format('truetype');
+    font-weight: 100 900;
+    font-display: swap;
+
+}
+
+html {
+    font-family: Cinzel, serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+main .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+
+}
+
+main .top .logo-nom a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+
+}
+
+main .top .menu ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .top .menu ul li {
+    list-style: none;
+    margin-right: 1rem;
+}
+
+main .top .menu ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main .top .menu ul li a:hover {
+    color: #ccc;
+}
