@@ -10,10 +10,18 @@
 
 <body>
     @extends('layouts.nav')
+    @section('content')
 
-    @php
-    $user = session('user');
-    @endphp
+    @foreach ($photos as $img)
+    <div class="photo">
+        <div class="description">
+            <img src="{{$img->url}}" alt="{{$img->titre}}">
+            <h2>{{$img->titre}}</h2>
+        </div>
+    </div>
+
+    @endforeach
+    @endsection
 
 
 </body>

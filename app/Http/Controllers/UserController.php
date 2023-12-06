@@ -29,7 +29,7 @@ class UserController extends BaseController
             session(['user' => $user]);
             return redirect('/');
         } else {
-            return redirect('/login', ['error' => 'Identifiants incorrects']);
+            return redirect('/login', ['error' => 'Identifiants incorrects'], 301);
         }
     }
 
@@ -48,5 +48,11 @@ class UserController extends BaseController
         // Création d'une session
         session(['user' => $newUsers]);
         return redirect('/login');
+    }
+
+    function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

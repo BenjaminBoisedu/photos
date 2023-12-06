@@ -10,7 +10,7 @@
 
 <body>
     @extends('layouts.nav')
-    @section('nav')
+    @section('content')
     <div class="login-form">
         <form action="{{route('loginT')}}" method="post">
             @csrf
