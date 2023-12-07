@@ -30,13 +30,13 @@
                             <li><a href="{{route('register')}}">S'inscrire</a></li>
                             @endguest
                             @auth
-                            <li><a href="#">Ajouter une photo</a></li>
-                            <li><a href="#">Explorer</a></li>
-                            <li><a href="#">
+                            <li><a href="{{route('NewPhoto')}}">Ajouter une photo</a></li>
+                            <li><a href="{{route('explorer')}}">Explorer</a></li>
+                            <li><a href="{{route('user', ['id' => session('user')->id])}}">
                                     {{session('user')->name}}
                                 </a></li>
                             </li>
-                            <li><a href="{{route('logout')}}">Déconnexion</a></li>
+                            <li><a href=" {{route('logout')}}">Déconnexion</a></li>
                             @endauth
                         </ul>
                     </nav>

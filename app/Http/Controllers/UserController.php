@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Album;
+// Hashed
+use Illuminate\Support\Facades\Hash;
+
+
 
 use function Laravel\Prompts\alert;
 
@@ -24,12 +30,17 @@ class UserController extends BaseController
         $name = request('name');
         $password = request('password');
         $user = DB::table('users')->where('name', $name)->first();
-        if ($user->password == sha1($password)) {
-            $user =  Auth::loginUsingId($user->id);
-            session(['user' => $user]);
-            return redirect('/');
+        if ($user) {
+            if (Hash::check($password, $user->password)) {
+                session(['user' => $user]);
+                // Authentification
+                Auth::loginUsingId($user->id);
+                return redirect('/');
+            } else {
+                return back()->with('fail', 'Mot de passe incorrect');
+            }
         } else {
-            return redirect('/login', ['error' => 'Identifiants incorrects'], 301);
+            return back()->with('fail', 'Aucun compte trouvé pour ce nom');
         }
     }
 
@@ -43,7 +54,7 @@ class UserController extends BaseController
         $newUsers = new \App\Models\User;
         $newUsers->name = request('name');
         $newUsers->email = request('email');
-        $newUsers->password = request('password');
+        $newUsers->password = Hash::make(request('password'));
         $newUsers->save();
         // Création d'une session
         session(['user' => $newUsers]);
@@ -54,5 +65,18 @@ class UserController extends BaseController
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    function displayUser($id)
+    {
+        $user = User::find($id);
+        $photo = DB::table('photos')->where('album_id', $id)->get();
+        return view('user', ['user' => $user, 'photo' => $photo]);
+    }
+
+    function AddAlbum()
+    {
+        $albums = User::find(session('user')->id)->albums;
+        return view('index', ['albums' => $albums]);
     }
 }
