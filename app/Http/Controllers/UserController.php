@@ -80,13 +80,12 @@ class UserController extends BaseController
         $NewAlbum->titre = request('titre');
         $NewAlbum->user_id = session('user')->id;
         $NewAlbum->save();
-        return redirect('/index');
+        return view('/index');
     }
 
     function AddAlbum()
     {
-        $albums = Album::all();
-        return redirect('/index', ['albums' => $albums])
-            ->with('success', 'Album ajouté');
+        $albums = User::find(session('user')->id)->albums;
+        return view('index', ['albums' => $albums]);
     }
 }

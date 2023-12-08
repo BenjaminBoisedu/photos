@@ -30,10 +30,6 @@
                 <input type="text" name="titre" id="titre">
                 <label for="url">Url</label>
                 <input type="text" name="url" id="url">
-                @csrf
-                <label for="file">Ajouter votre photo</label>
-                <input type="file" name="file" id="file">
-                @csrf
                 <input type="submit" value="Envoyer">
 
             </form>

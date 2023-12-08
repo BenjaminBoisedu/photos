@@ -24,9 +24,7 @@
                         @csrf
                         <input type="hidden" name="id" value="{{$img->id}}">
                         <select name="album" id="">
-                            @foreach ($albums as $album)
-                            <option value="{{$album->id}}">{{$album->titre}}</option>
-                            @endforeach
+
                         </select>
                         <input type="submit" value="Ajouter à l'album">
                     </form>
