@@ -33,6 +33,12 @@
                     <form action="{{route('index')}}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$img->id}}">
+                        <select name="album" id="">
+                            @foreach ($albums as $a)
+                            <option value="{{$a->id}}">{{$a->titre}}</option>
+                            @endforeach
+                        </select>
+                        <input type="submit" value="Ajouter à l'album">
                     </form>
                 </div>
             </div>

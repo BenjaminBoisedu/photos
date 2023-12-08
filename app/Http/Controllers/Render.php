@@ -13,21 +13,8 @@ class Render extends UserController
 {
     function displayPhotos()
     {
-        $photos = Photo::all(
-            'id',
-            'titre',
-            'url',
-            'note'
-        );
-        $tags = Tag::all(
-            'id',
-            'nom'
-        );
-        $albums = Album::all(
-            'id',
-            'titre'
-        );
-        return view('index', ['photos' => $photos], ['tags' => $tags], ['albums' => $albums]);
+        $photos = Photo::all();
+        return view('index', ['photos' => $photos]);
     }
 
     function displayPhoto($id)
