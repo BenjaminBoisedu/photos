@@ -12,27 +12,24 @@
     @extends('layouts.nav')
     @section('content')
     <div class="container">
-        <form action="{{route('search')}}" method="post">
-            @csrf
-            <input type="text" name="search" id="search" placeholder="Rechercher par nom">
-            <button type="submit">Rechercher</button>
-        </form>
-        @foreach ($tags as $tag)
-        <div class="tag">
-            <a href="{{route('searchTag', ['id' => $tag->id])}}">{{$tag->nom}}</a>
-        </div>
-        @endforeach
         <div class="Photo-container">
             @foreach ($photos as $img)
             <div class="photo">
                 <div class="description">
                     <a href="{{route('photo', ['id' => $img->id])}}"><img src="{{$img->url}}" alt="{{$img->titre}}"></a>
                     <h2>{{$img->titre}}</h2>
+                    @foreach ($img->tags as $tag)
+                    <p>{{$tag->nom}}</p>
+                    @endforeach
                 </div>
                 <div class="addAlbums">
                     <form action="{{route('index')}}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$img->id}}">
+                        <select name="album" id="">
+                            <option value="{{$albums->id}}">{{$albums->titre}}</option>
+                        </select>
+                        <input type="submit" value="Ajouter à l'album">
                         <select name="album" id="">
                             @foreach ($albums as $a)
                             <option value="{{$a->id}}">{{$a->titre}}</option>

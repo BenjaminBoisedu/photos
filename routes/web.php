@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', [App\Http\Controllers\Render::class, 'displayPhotos'])->name('index');
-Route::post('/search', [App\Http\Controllers\Render::class, 'search'])->name('search');
-Route::post('/searchTag', [App\Http\Controllers\Render::class, 'searchTag'])->name('searchTag');
+Route::get('/index', [App\Http\Controllers\Render::class, 'displayPhotos'])->name('index');
+Route::get('/', [App\Http\Controllers\Render::class, 'displayPhotos'])->name('index');
+Route::post('/', [App\Http\Controllers\Render::class, 'search'])->name('search');
 
 Route::get('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
 Route::post('/login', [App\Http\Controllers\UserController::class, 'loginT'])->name('loginT');

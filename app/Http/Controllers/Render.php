@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Album;
 use App\Models\Photo;
 use App\Models\Tag;
 use App\Models\User;
@@ -79,10 +78,12 @@ class Render extends UserController
         return view('index', ['photos' => $photos]);
     }
 
-    function searchTag($id)
+    function searchTag(Request $request)
     {
-        $tag = Tag::find($id);
-        $photos = $tag->photos;
+        $search = $request->input('search');
+        $photos = Photo::query()
+            ->where('tags', 'LIKE', "%{$search}%")
+            ->get();
         return view('index', ['photos' => $photos]);
     }
 }
