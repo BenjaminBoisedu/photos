@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
+use App\Models\Album;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,9 @@ class Render extends UserController
     function displayPhotos()
     {
         $photos = Photo::all();
-        return view('index', ['photos' => $photos]);
+        $albums = Album::all();
+
+        return view('index', ['photos' => $photos, 'albums' => $albums]);
     }
 
     function displayPhoto($id)

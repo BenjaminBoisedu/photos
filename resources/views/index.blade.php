@@ -24,7 +24,7 @@
                         @csrf
                         <input type="hidden" name="id" value="{{$img->id}}">
                         <select name="album" id="">
-                            @foreach ($album as $a)
+                            @foreach ($albums as $a)
                             <option value="{{$a->id}}">{{$a->titre}}</option>
                             @endforeach
                         </select>
