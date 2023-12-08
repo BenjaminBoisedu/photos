@@ -14,7 +14,6 @@ class Render extends UserController
     {
         $photos = Photo::all();
         $albums = Album::all();
-
         return view('index', ['photos' => $photos, 'albums' => $albums]);
     }
 
