@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Photo;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,7 +14,9 @@ class Render extends UserController
     function displayPhotos()
     {
         $photos = Photo::all();
-        return view('index', ['photos' => $photos]);
+        $albums = Album::all();
+        $tags = Tag::all();
+        return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
     }
 
     function displayPhoto($id)
@@ -38,6 +41,12 @@ class Render extends UserController
         $tag->nom = $nom;
         $tag->save();
         return redirect()->route('NewPhoto');
+    }
+
+    function Displaytag($id)
+    {
+        $tags = Tag::find($id);
+        return view('index', ['tags' => $tags]);
     }
 
     function NewPhotoT(Request $request)
@@ -74,15 +83,6 @@ class Render extends UserController
         $search = $request->input('search');
         $photos = Photo::query()
             ->where('titre', 'LIKE', "%{$search}%")
-            ->get();
-        return view('index', ['photos' => $photos]);
-    }
-
-    function searchTag(Request $request)
-    {
-        $search = $request->input('search');
-        $photos = Photo::query()
-            ->where('tags', 'LIKE', "%{$search}%")
             ->get();
         return view('index', ['photos' => $photos]);
     }
