@@ -38,5 +38,5 @@ Route::post('/NewPhoto', [App\Http\Controllers\Render::class, 'NewPhotoT'])->nam
 Route::get('/explorer', [App\Http\Controllers\Render::class, 'explorer'])->name('explorer')->middleware('auth');
 Route::post('/explorer', [App\Http\Controllers\Render::class, 'explorerT'])->name('explorerT')->middleware('auth');
 
-Route::get('/index', [App\Http\Controllers\UserController::class, 'AddAlbum'])->name('addAlbums');
-Route::post('/index', [App\Http\Controllers\UserController::class, 'NewAlbum'])->name('NewAlbum')->middleware('auth');
+Route::get('/index', [App\Http\Controllers\AlbumController::class, 'index'])->name('index');
+Route::post('/index', [App\Http\Controllers\AlbumController::class, 'store'])->name('store')->middleware('auth');

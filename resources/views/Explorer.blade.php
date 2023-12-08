@@ -32,7 +32,6 @@
                 <div class="description">
                     <a href="{{route('photo', ['id' => $img->id])}}"><img src="{{$img->url}}" alt="{{$img->titre}}"></a>
                     <h2>{{$img->titre}}</h2>
-                    <p>{{$img->note}}</p>
                 </div>
             </div>
             @endforeach

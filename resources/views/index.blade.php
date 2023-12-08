@@ -20,11 +20,13 @@
                     <h2>{{$img->titre}}</h2>
                 </div>
                 <div class="addAlbums">
-                    <form action="{{route('addAlbums')}}" method="POST">
+                    <form action="{{route('index')}}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$img->id}}">
                         <select name="album" id="">
-
+                            @foreach ($album as $a)
+                            <option value="{{$a->id}}">{{$a->titre}}</option>
+                            @endforeach
                         </select>
                         <input type="submit" value="Ajouter à l'album">
                     </form>
