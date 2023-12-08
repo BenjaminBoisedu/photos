@@ -73,20 +73,4 @@ class UserController extends BaseController
         $photo = DB::table('photos')->where('album_id', $id)->get();
         return view('user', ['user' => $user, 'photo' => $photo]);
     }
-
-    function NewAlbum()
-    {
-        $NewAlbum = new Album();
-        $NewAlbum->titre = request('titre');
-        $NewAlbum->user_id = session('user')->id;
-        $NewAlbum->save();
-        return redirect('/index');
-    }
-
-    function AddAlbum()
-    {
-        $albums = Album::all();
-        return redirect('/index', ['albums' => $albums])
-            ->with('success', 'Album ajouté');
-    }
 }

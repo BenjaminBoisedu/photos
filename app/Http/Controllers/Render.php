@@ -11,8 +11,7 @@ class Render extends UserController
 {
     function displayPhotos()
     {
-        // Random
-        $photos = Photo::inRandomOrder()->get();
+        $photos = Photo::all();
         return view('index', ['photos' => $photos]);
     }
 
@@ -20,15 +19,6 @@ class Render extends UserController
     {
         $photo = Photo::find($id);
         return view('photo', ['photo' => $photo]);
-    }
-
-    function search(Request $request)
-    {
-        $search = $request->input('search');
-        $photos = Photo::query()
-            ->where('titre', 'LIKE', "%{$search}%")
-            ->get();
-        return view('index', ['photos' => $photos]);
     }
 
     function NewPhoto()
@@ -62,5 +52,14 @@ class Render extends UserController
             ->where('note', 'LIKE', "%{$search}%")
             ->get();
         return view('explorer', ['photos' => $photos]);
+    }
+
+    function search(Request $request)
+    {
+        $search = $request->input('search');
+        $photos = Photo::query()
+            ->where('titre', 'LIKE', "%{$search}%")
+            ->get();
+        return view('index', ['photos' => $photos]);
     }
 }

@@ -17,10 +17,13 @@
 
                 </div>
                 <div class="search">
-                    <form action="">
+                    @auth
+                    <form action="{{route('search')}}" method="post">
+                        @csrf
                         <input type="text" name="search" id="search" placeholder="Rechercher">
                         <button type="submit">Rechercher</button>
                     </form>
+                    @endauth
                 </div>
                 <div class="menu">
                     <nav>
