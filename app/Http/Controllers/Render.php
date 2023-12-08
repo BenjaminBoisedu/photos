@@ -43,10 +43,22 @@ class Render extends UserController
         return redirect()->route('NewPhoto');
     }
 
-    function Displaytag($id)
+    function showByTag($id)
     {
-        $tags = Tag::find($id);
-        return view('index', ['tags' => $tags]);
+        $tag = Tag::find($id);
+
+        if (!$tag) {
+        // Handle the case where the tag is not found
+        abort(404);
+    }
+
+    // Get photos associated with the clicked tag
+    $photos = $tag->photos;
+
+    $albums = Album::all();
+    $tags = Tag::all();
+
+    return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags, 'tag' => $tag]);
     }
 
     function NewPhotoT(Request $request)
@@ -81,9 +93,11 @@ class Render extends UserController
     function search(Request $request)
     {
         $search = $request->input('search');
+        $albums = Album::all();
+        $tags = Tag::all();
         $photos = Photo::query()
             ->where('titre', 'LIKE', "%{$search}%")
             ->get();
-        return view('index', ['photos' => $photos]);
+        return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
     }
 }
