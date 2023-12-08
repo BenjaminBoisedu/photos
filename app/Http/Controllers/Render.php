@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\Photo;
 use App\Models\Tag;
 use App\Models\User;
@@ -12,8 +13,21 @@ class Render extends UserController
 {
     function displayPhotos()
     {
-        $photos = Photo::all();
-        return view('index', ['photos' => $photos]);
+        $photos = Photo::all(
+            'id',
+            'titre',
+            'url',
+            'note'
+        );
+        $tags = Tag::all(
+            'id',
+            'nom'
+        );
+        $albums = Album::all(
+            'id',
+            'titre'
+        );
+        return view('index', ['photos' => $photos], ['tags' => $tags], ['albums' => $albums]);
     }
 
     function displayPhoto($id)
@@ -78,12 +92,10 @@ class Render extends UserController
         return view('index', ['photos' => $photos]);
     }
 
-    function searchTag(Request $request)
+    function searchTag($id)
     {
-        $search = $request->input('search');
-        $photos = Photo::query()
-            ->where('tags', 'LIKE', "%{$search}%")
-            ->get();
+        $tag = Tag::find($id);
+        $photos = $tag->photos;
         return view('index', ['photos' => $photos]);
     }
 }
