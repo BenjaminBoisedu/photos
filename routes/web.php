@@ -45,3 +45,6 @@ Route::get('/index', [App\Http\Controllers\AlbumController::class, 'index'])->na
 Route::post('/index', [App\Http\Controllers\AlbumController::class, 'store'])->name('store')->middleware('auth');
 
 Route::post('/NewTag', [App\Http\Controllers\Render::class, 'NewTag'])->name('NewTag')->middleware('auth');
+
+Route::get('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'create'])->name('NewAlbum')->middleware('auth');
+Route::post('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'store'])->name('NewAlbumT')->middleware('auth');

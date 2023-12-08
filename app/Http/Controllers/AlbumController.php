@@ -33,6 +33,7 @@ class AlbumController extends UserController
         $titre = $request->input('titre');
         $album = new Album();
         $album->titre = $titre;
+        $album->creation = now();
         $album->user()->associate($request->user());
         $album->save();
         return redirect()->route('index');
