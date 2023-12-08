@@ -18,7 +18,7 @@ Route::get('/index', [App\Http\Controllers\Render::class, 'displayPhotos'])->nam
 Route::get('/', [App\Http\Controllers\Render::class, 'displayPhotos'])->name('index');
 Route::post('/', [App\Http\Controllers\Render::class, 'search'])->name('search');
 
-Route::get('/tag/{id}', [App\Http\Controllers\Render::class, 'Displayphotos'])->name('tag');
+Route::get('/tag/{id}', [App\Http\Controllers\Render::class, 'showByTag'])->name('tag');
 
 
 Route::get('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
