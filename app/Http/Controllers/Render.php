@@ -81,9 +81,11 @@ class Render extends UserController
     function search(Request $request)
     {
         $search = $request->input('search');
+        $albums = Album::all();
+        $tags = Tag::all();
         $photos = Photo::query()
             ->where('titre', 'LIKE', "%{$search}%")
             ->get();
-        return view('index', ['photos' => $photos]);
+        return view('index', ['photos' => $photos, 'tags' => $tags, 'albums' => $albums]);
     }
 }
