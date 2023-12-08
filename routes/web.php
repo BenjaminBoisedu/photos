@@ -36,4 +36,4 @@ Route::post('/NewPhoto', [App\Http\Controllers\Render::class, 'NewPhotoT'])->nam
 Route::get('/explorer', [App\Http\Controllers\Render::class, 'explorer'])->name('explorer');
 Route::post('/explorer', [App\Http\Controllers\Render::class, 'explorerT'])->name('explorerT');
 
-Route::get('/', [App\Http\Controllers\UserController::class, 'AddAlbum'])->name('addAlbums');
+Route::get('/index', [App\Http\Controllers\UserController::class, 'AddAlbum'])->name('addAlbums');

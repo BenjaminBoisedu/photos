@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class Render extends UserController
 {
-    function index()
-    {
-        return view('index');
-    }
-
     function displayPhotos()
     {
         // Random

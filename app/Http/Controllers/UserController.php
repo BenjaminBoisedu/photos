@@ -74,9 +74,19 @@ class UserController extends BaseController
         return view('user', ['user' => $user, 'photo' => $photo]);
     }
 
+    function NewAlbum()
+    {
+        $NewAlbum = new Album();
+        $NewAlbum->titre = request('titre');
+        $NewAlbum->user_id = session('user')->id;
+        $NewAlbum->save();
+        return redirect('/index');
+    }
+
     function AddAlbum()
     {
-        $albums = User::find(session('user')->id)->albums;
-        return view('index', ['albums' => $albums]);
+        $albums = Album::all();
+        return redirect('/index', ['albums' => $albums])
+            ->with('success', 'Album ajouté');
     }
 }
