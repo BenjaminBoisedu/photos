@@ -40,3 +40,5 @@ Route::post('/explorer', [App\Http\Controllers\Render::class, 'explorerT'])->nam
 
 Route::get('/index', [App\Http\Controllers\AlbumController::class, 'index'])->name('index');
 Route::post('/index', [App\Http\Controllers\AlbumController::class, 'store'])->name('store')->middleware('auth');
+
+Route::post('/NewTag', [App\Http\Controllers\Render::class, 'NewTag'])->name('NewTag')->middleware('auth');

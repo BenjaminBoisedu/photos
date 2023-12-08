@@ -19,7 +19,7 @@
                     @csrf
                     <select name="search" id="">
                         <option value="1">1 étoile</option>
-                        <option value=" 2">2 étoiles</option>
+                        <option value="2">2 étoiles</option>
                         <option value="3">3 étoiles</option>
                         <option value="4">4 étoiles</option>
                         <option value="5">5 étoiles</option>

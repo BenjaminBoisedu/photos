@@ -13,7 +13,10 @@ class AlbumController extends UserController
      */
     public function index()
     {
-        $albums = Album::all();
+        $albums = Album::all(
+            'id',
+            'titre'
+        );
         return view('index', ['albums' => $albums]);
     }
 

@@ -18,15 +18,16 @@
                 <div class="description">
                     <a href="{{route('photo', ['id' => $img->id])}}"><img src="{{$img->url}}" alt="{{$img->titre}}"></a>
                     <h2>{{$img->titre}}</h2>
+                    @foreach ($img->tags as $tag)
+                    <p>{{$tag->nom}}</p>
+                    @endforeach
                 </div>
                 <div class="addAlbums">
                     <form action="{{route('index')}}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$img->id}}">
                         <select name="album" id="">
-                            @foreach ($album as $a)
-                            <option value="{{$a->id}}">{{$a->titre}}</option>
-                            @endforeach
+                            <option value="{{$albums->id}}">{{$albums->titre}}</option>
                         </select>
                         <input type="submit" value="Ajouter à l'album">
                     </form>

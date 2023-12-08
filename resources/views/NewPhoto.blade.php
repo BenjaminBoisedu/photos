@@ -13,24 +13,24 @@
     <div class="container">
         <div class="form-photos">
             <h1>Ajouter une photo</h1>
-            <div class="error">
-                @if($errors->any())
-                @foreach($errors->all() as $error)
-                <p>{{$error}}</p>
-                @endforeach
-                @endif
-            </div>
-            <div class="success">
-                @if(session('success'))
-                <p>{{session('success')}}</p>
-                @endif
-            </div>
             <form action="{{route('NewPhotoT')}}" method="POST">
                 <label for="titre">Titre</label>
                 <input type="text" name="titre" id="titre">
                 <label for="url">Url</label>
                 <input type="text" name="url" id="url">
+                <select name="tags" id="">
+                    @foreach ($tags as $tag)
+                    <option value="{{$tag->id}}">{{$tag->nom}}</option>
+                    @endforeach
+                </select>
+
                 <input type="submit" value="Envoyer">
+            </form>
+            <form action="{{route('NewTag')}}" method="POST">
+                @csrf
+                <label for="Tag">Nouveau Tag</label>
+                <input type="text" name="NewTag">
+                <input type="submit" value="Ajouter un tag">
 
             </form>
         </div>
