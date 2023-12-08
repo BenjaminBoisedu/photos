@@ -10,7 +10,6 @@
 
 <body>
     @extends('layouts.nav')
-    @section('nav')
     <div class="register-form">
         <form action="{{route('registerT')}}" method="post">
             @csrf
@@ -33,7 +32,6 @@
             </div>
         </form>
     </div>
-    @endsection
 </body>
 
 </html>

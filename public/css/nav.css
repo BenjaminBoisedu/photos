@@ -38,6 +38,11 @@ main .top .logo-nom a {
 
 }
 
+main .top .logo-nom a:hover {
+    color: #ccc;
+}
+
+
 main .top .menu ul {
     display: flex;
     justify-content: space-between;
