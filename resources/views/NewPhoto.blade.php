@@ -14,6 +14,7 @@
         <div class="form-photos">
             <h1>Ajouter une photo</h1>
             <form action="{{route('NewPhotoT')}}" method="POST">
+                @csrf
                 <label for="titre">Titre</label>
                 <input type="text" name="titre" id="titre">
                 <label for="url">Url</label>
@@ -23,13 +24,18 @@
                     <option value="{{$tag->id}}">{{$tag->nom}}</option>
                     @endforeach
                 </select>
+                <select name="album" id="">
+                    @foreach ($albums as $a)
+                    <option value="{{$a->id}}">{{$a->titre}}</option>
+                    @endforeach
+                </select>
 
                 <input type="submit" value="Envoyer">
             </form>
             <form action="{{route('NewTag')}}" method="POST">
                 @csrf
                 <label for="Tag">Nouveau Tag</label>
-                <input type="text" name="tags">
+                <input type="text" name="NewTag">
                 <input type="submit" value="Ajouter un tag">
 
             </form>

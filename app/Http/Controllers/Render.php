@@ -27,11 +27,12 @@ class Render extends UserController
 
     function NewPhoto()
     {
+        $albums = Album::all();
         $tags = Tag::all(
             'id',
             'nom'
         );
-        return view('NewPhoto', ['tags' => $tags]);
+        return view('NewPhoto', ['tags' => $tags], ['albums' => $albums]);
     }
 
     function NewTag(Request $request)
@@ -66,11 +67,14 @@ class Render extends UserController
         $titre = $request->input('titre');
         $url = $request->input('url');
         $tags = $request->input('tags');
+        $albums = $request->input('album');
         $photo = new Photo();
         $photo->titre = $titre;
+        $photo->id = count(Photo::all()) + 1;
         $photo->url = $url;
-        $photo->tags = $tags;
-        $photo->album()->associate($request->user());
+        $photo->note = 0;
+        $photo->album_id = $albums;
+        $photo->tags()->attach($tags);
         $photo->save();
         return redirect()->route('index');
     }
@@ -99,5 +103,26 @@ class Render extends UserController
             ->where('titre', 'LIKE', "%{$search}%")
             ->get();
         return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
+    }
+
+    function displayAlbums()
+    {
+        $photos = Photo::all();
+        $albums = Album::all();
+        return view('albums', ['albums' => $albums]);
+    }
+
+    function displayAlbum($id)
+    {
+        $album = Album::find($id);
+        $photos = $album->photos;
+        return view('album', ['album' => $album, 'photos' => $photos]);
+    }
+
+    function deletePhoto($id)
+    {
+        $photo = Photo::find($id);
+        $photo->delete();
+        return redirect()->route('index');
     }
 }

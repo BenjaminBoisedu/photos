@@ -24,6 +24,7 @@
                             <li><a href="{{route('register')}}">S'inscrire</a></li>
                             @endguest
                             @auth
+                            <li><a href="{{route('albums')}}">Albums</a></li>
                             <li><a href="{{route('NewAlbum')}}">Ajouter un album</a></li>
                             <li><a href="{{route('NewPhoto')}}">Ajouter une photo</a></li>
                             <li><a href="{{route('explorer')}}">Explorer</a></li>
