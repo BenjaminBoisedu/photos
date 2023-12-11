@@ -59,7 +59,6 @@ class AlbumController extends UserController
      */
     public function update(Request $request, Album $album)
     {
-        //
     }
 
     /**
@@ -67,5 +66,13 @@ class AlbumController extends UserController
      */
     public function destroy(Album $album)
     {
+    }
+
+    function AjouterPhoto(Request $request)
+    {
+        $photo = $request->input('photo');
+        $album = $request->input('album');
+        $album->photos()->attach($photo);
+        return redirect()->route('index');
     }
 }

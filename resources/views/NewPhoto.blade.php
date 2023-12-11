@@ -29,7 +29,7 @@
             <form action="{{route('NewTag')}}" method="POST">
                 @csrf
                 <label for="Tag">Nouveau Tag</label>
-                <input type="text" name="NewTag">
+                <input type="text" name="tags">
                 <input type="submit" value="Ajouter un tag">
 
             </form>

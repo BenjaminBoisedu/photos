@@ -12,19 +12,23 @@
     @extends('layouts.nav')
     @section('content')
     <div class="container">
-        @foreach ($tags as $tag)
-        <div class="tag">
-            <a href="{{route('tag', ['id' => $tag->id])}}">{{$tag->nom}}</a>
+        <div class="title">
+            <h1>Explorer</h1>
         </div>
-        @endforeach
+        <div class="Container-tag">
+
+            @foreach ($tags as $tag)
+            <div class="tag">
+                <a href="{{route('tag', ['id' => $tag->id])}}">{{$tag->nom}}</a>
+            </div>
+            @endforeach
+        </div>
         <div class="search">
-            @auth
             <form action="{{route('search')}}" method="post">
                 @csrf
                 <input type="text" name="search" id="search" placeholder="Rechercher">
                 <button type="submit">Rechercher</button>
             </form>
-            @endauth
         </div>
         <div class="Photo-container">
             @foreach ($photos as $img)

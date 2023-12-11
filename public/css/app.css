@@ -46,6 +46,11 @@ main .top .menu ul li {
 
 }
 
+.container .Container-tag {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .container .Photo-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
