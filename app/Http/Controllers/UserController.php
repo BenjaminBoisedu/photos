@@ -12,7 +12,7 @@ use App\Models\Album;
 use App\Models\Photo;
 // Hashed
 use Illuminate\Support\Facades\Hash;
-use App\Models\Photo;
+
 
 
 
