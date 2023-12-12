@@ -39,7 +39,13 @@
             <div class="album">
                 <div class="description">
                     <a href="{{route('album', ['id' => $a->id])}}">
-                        <h2 class="album-title">{{$a->titre}}</h2>
+                        @if($a->photos->isNotEmpty())
+                        <img src="{{$a->photos->first()->url}}" alt="{{$a->titre}}">
+                        @else 
+                        <img src="https://picsum.photos/200" alt="{{$a->titre}}">
+                        @endif
+                        <h2 class="album-title">{{$a->titre}}
+                        </h2>
                     </a>
                     <p class="creation">{{$a->creation}}</p>
                 </div>

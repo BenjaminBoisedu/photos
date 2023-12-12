@@ -219,6 +219,19 @@ main .top .menu ul li {
     padding: 1em;
 }
 
+.container .album-container .album img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.container .album-container .album img:hover {
+    transform: scale(1.03);
+}
+
 .album-container .album:hover {
     background-color: #333;
 }
