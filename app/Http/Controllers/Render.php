@@ -107,6 +107,15 @@ class Render extends UserController
         return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
     }
 
+    function searchAlbumsDate(Request $request)
+    {
+        $order = $request->input('order', 'asc');
+
+        $albums = Album::orderBy('creation', $order)->get();
+
+        return view('albums', ['albums' => $albums]);
+    }
+
     function displayAlbums()
     {
         $photos = Photo::all();
