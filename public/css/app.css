@@ -74,3 +74,128 @@ main .top .menu ul li {
     aspect-ratio: 1/1;
     object-fit: cover;
 }
+
+
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.search form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+}
+
+.search input:focus {
+    border: 1px solid #333;
+}
+
+.search button {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.tag:hover {
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.tag.active {
+    background-color: #333;
+    color: #fff;
+}
+
+.tag a {
+    text-decoration: none;
+    color: #333;
+}
+
+.addAlbums {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.addAlbums form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addAlbums input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+}
+
+.addAlbums input:focus {
+    border: 1px solid #333;
+}
+
+.addAlbums input[type="submit"] {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+}
+
+.addAlbums button:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.addAlbums select {
+    padding: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+}
+
+.addAlbums select:focus {
+    border: 1px solid #333;
+}
+
+.addAlbums select option {
+    padding: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+}
+
+.addAlbums select option:focus {
+    border: 1px solid #333;
+}

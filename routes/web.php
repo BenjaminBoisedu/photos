@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,8 +41,6 @@ Route::get('/user/{id}', [App\Http\Controllers\Render::class, 'displayUser'])->n
 Route::get('/NewPhoto', [App\Http\Controllers\Render::class, 'NewPhoto'])->name('NewPhoto')->middleware('auth');
 Route::post('/NewPhoto', [App\Http\Controllers\Render::class, 'NewPhotoT'])->name('NewPhotoT')->middleware('auth');
 
-Route::get('/explorer', [App\Http\Controllers\Render::class, 'explorer'])->name('explorer')->middleware('auth');
-Route::post('/explorer', [App\Http\Controllers\Render::class, 'explorerT'])->name('explorerT')->middleware('auth');
 
 Route::get('/index', [App\Http\Controllers\AlbumController::class, 'index'])->name('index');
 Route::post('/index', [App\Http\Controllers\AlbumController::class, 'store'])->name('store')->middleware('auth');
@@ -50,9 +51,9 @@ Route::get('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'create'])
 Route::post('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'store'])->name('NewAlbumT')->middleware('auth');
 
 
-
-
 Route::get('/albums', [App\Http\Controllers\Render::class, 'displayAlbums'])->name('albums');
 Route::get('/album/{id}', [App\Http\Controllers\Render::class, 'displayAlbum'])->name('album')->middleware('auth');
+
+Route::post('/album/date', [App\Http\Controllers\Render::class, 'searchAlbumsDate'])->name('searchAlbumsDate')->middleware('auth');
 
 Route::delete('/deletePhoto/{id}', [App\Http\Controllers\Render::class, 'deletePhoto'])->name('deletePhoto')->middleware('auth');

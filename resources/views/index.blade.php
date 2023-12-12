@@ -15,6 +15,13 @@
         <div class="title">
             <h1>Explorer</h1>
         </div>
+        <div class="search">
+            <form action="{{route('search')}}" method="post">
+                @csrf
+                <input type="text" name="search" id="search" placeholder="Rechercher votre photo">
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
         <div class="Container-tag">
 
             @foreach ($tags as $tag)
@@ -22,13 +29,6 @@
                 <a href="{{route('tag', ['id' => $tag->id])}}">{{$tag->nom}}</a>
             </div>
             @endforeach
-        </div>
-        <div class="search">
-            <form action="{{route('search')}}" method="post">
-                @csrf
-                <input type="text" name="search" id="search" placeholder="Rechercher">
-                <button type="submit">Rechercher</button>
-            </form>
         </div>
         <div class="Photo-container">
             @foreach ($photos as $img)

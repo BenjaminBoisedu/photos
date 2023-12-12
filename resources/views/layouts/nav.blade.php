@@ -4,6 +4,7 @@
     <title>App Name</title>
     <link rel="stylesheet" href="../../../css/nav.css">
     <script></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,6 @@
                             <li><a href="{{route('albums')}}">Albums</a></li>
                             <li><a href="{{route('NewAlbum')}}">Ajouter un album</a></li>
                             <li><a href="{{route('NewPhoto')}}">Ajouter une photo</a></li>
-                            <li><a href="{{route('explorer')}}">Explorer</a></li>
                             <li><a href="{{route('user', ['id' => session('user')->id])}}">
                                     {{session('user')->name}}
                                 </a></li>
