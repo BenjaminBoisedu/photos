@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/app.css">
-    <title>Document</title>
+    <title>Tvmblr</title>
 </head>
 
 <body>
@@ -13,23 +13,32 @@
     @section('content')
     <div class="container">
         <div class="title">
-            <h1>Explorer</h1>
+            <h1>Explorer les albums</h1>
         </div>
         <div class="search">
-            <form action="{{route('search')}}" method="post">
+            <form action="{{route('searchAlbums')}}" method="post">
                 @csrf
                 <input type="text" name="search" id="search" placeholder="Rechercher">
                 <button type="submit">Rechercher</button>
             </form>
         </div>
-        <div class="Photo-container">
+
+        <div class="searchDate">
+            <form action="{{ route('searchAlbumsDate') }}" method="post">
+                @csrf
+                <select name="order" id="">
+                    <option value="asc">Du plus ancien au plus récent</option>
+                    <option value="desc">Du plus récent au plus ancien</option>
+                </select>
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+
+        <div class="album-container">
             @foreach ($albums as $a)
-            <div class="photo">
+            <div class="album">
                 <div class="description">
-                    {{-- <a href="{{route('photo', ['id' => $img->id])}}"><img src="{{$img->url}}" alt="{{$img->titre}}"></a> --}}
-                    {{-- link a to the album/id --}}
                     <a href="{{route('album', ['id' => $a->id])}}">
-                        <img src="{{$a->url}}" alt="{{$a->titre}}">
                         <h2 class="album-title">{{$a->titre}}</h2>
                     </a>
                 </div>

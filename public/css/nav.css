@@ -1,13 +1,8 @@
-@font-face {
-    font-family: Cinzel;
-    src: url(./Cinzel/Cinzel-VariableFont_wght.ttf) format('truetype');
-    font-weight: 100 900;
-    font-display: swap;
-
-}
+@import url('https://fonts.googleapis.com/css?family=Kalnia');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 
 html {
-    font-family: Cinzel, serif;
+    font-family: Libre Baskerville, serif;
     font-size: 1.2rem;
     line-height: 1.5;
     color: #333;
@@ -20,14 +15,19 @@ body {
     background-color: #fff;
 }
 
+.separator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 90%;
+    margin-right: 4rem;
+}
+
 main .top {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #333;
+    background-color: #0e0e0e;
     color: #fff;
-
 }
 
 main .top .logo-nom a {
@@ -35,18 +35,10 @@ main .top .logo-nom a {
     color: #fff;
     font-size: 1rem;
     font-weight: 700;
-
 }
 
 main .top .logo-nom a:hover {
     color: #ccc;
-}
-
-
-main .top .menu ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 main .top .menu ul li {
@@ -61,4 +53,37 @@ main .top .menu ul li a {
 
 main .top .menu ul li a:hover {
     color: #ccc;
+}
+
+.global-container {
+    margin: 0 auto;
+}
+
+.main-content {
+    display: flex;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header ul{
+    display: flex;
+    position: fixed;
+    top: 25%;
+    left: 2.5%;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    gap: .8rem;
+}
+
+header ul li{
+    font-size: .8rem;
+    list-style: none;
 }

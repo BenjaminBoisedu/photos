@@ -12,6 +12,7 @@ use App\Models\Album;
 // Hashed
 use Illuminate\Support\Facades\Hash;
 use App\Models\Photo;
+use App\Models\Tag;
 
 
 
@@ -73,6 +74,7 @@ class UserController extends BaseController
         $user = User::find($id);
         $albums = Album::all();
         $photos = Photo::all();
-        return view('user', ['user' => $user, 'albums' => $albums, 'photos' => $photos]);
+        $tags = Tag::all();
+        return view('user', ['user' => $user, 'albums' => $albums, 'photos' => $photos, 'tags' => $tags]);
     }
 }

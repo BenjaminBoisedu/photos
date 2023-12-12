@@ -35,8 +35,8 @@ Route::get('/photo/{id}', [App\Http\Controllers\Render::class, 'displayPhoto'])-
 
 Route::get('/user/{id}', [App\Http\Controllers\Render::class, 'displayUser'])->name('user')->middleware('auth');
 
-Route::get('/NewPhoto', [App\Http\Controllers\Render::class, 'NewPhoto'])->name('NewPhoto')->middleware('auth');
-Route::post('/NewPhoto', [App\Http\Controllers\Render::class, 'NewPhotoT'])->name('NewPhotoT')->middleware('auth');
+Route::get('/Dashboard', [App\Http\Controllers\Render::class, 'NewPhoto'])->name('Dashboard')->middleware('auth');
+Route::post('/Dashboard', [App\Http\Controllers\Render::class, 'NewPhotoT'])->name('NewPhotoT')->middleware('auth');
 
 Route::get('/explorer', [App\Http\Controllers\Render::class, 'explorer'])->name('explorer')->middleware('auth');
 Route::post('/explorer', [App\Http\Controllers\Render::class, 'explorerT'])->name('explorerT')->middleware('auth');
@@ -51,6 +51,8 @@ Route::post('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'store'])
 
 
 Route::get('/albums', [App\Http\Controllers\Render::class, 'displayAlbums'])->name('albums');
+Route::post('/albums', [App\Http\Controllers\Render::class, 'searchAlbums'])->name('searchAlbums');
+Route::post('/albums/date', [App\Http\Controllers\Render::class, 'searchAlbumsDate'])->name('searchAlbumsDate');
 Route::get('/album/{id}', [App\Http\Controllers\Render::class, 'displayAlbum'])->name('album')->middleware('auth');
 
 Route::delete('/deletePhoto/{id}', [App\Http\Controllers\Render::class, 'deletePhoto'])->name('deletePhoto')->middleware('auth');

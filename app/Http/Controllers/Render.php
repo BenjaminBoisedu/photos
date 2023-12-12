@@ -16,13 +16,16 @@ class Render extends UserController
         $photos = Photo::all();
         $albums = Album::all();
         $tags = Tag::all();
+
         return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
     }
 
     function displayPhoto($id)
     {
+        $tags = Tag::all();
+        $albums = Album::all();
         $photo = Photo::find($id);
-        return view('photo', ['photo' => $photo]);
+        return view('photo', ['photo' => $photo, 'tags' => $tags, 'albums' => $albums]);
     }
 
     function NewPhoto()
@@ -32,7 +35,7 @@ class Render extends UserController
             'id',
             'nom'
         );
-        return view('NewPhoto', ['tags' => $tags], ['albums' => $albums]);
+        return view('Dashboard', ['tags' => $tags], ['albums' => $albums]);
     }
 
     function NewTag(Request $request)
@@ -49,11 +52,9 @@ class Render extends UserController
         $tag = Tag::find($id);
 
         if (!$tag) {
-            // Handle the case where the tag is not found
             abort(404);
         }
 
-        // Get photos associated with the clicked tag
         $photos = $tag->photos;
 
         $albums = Album::all();
@@ -64,34 +65,43 @@ class Render extends UserController
 
     function NewPhotoT(Request $request)
     {
-        $titre = $request->input('titre');
-        $url = $request->input('url');
-        $tags = $request->input('tags');
-        $albums = $request->input('album');
-        $photo = new Photo();
-        $photo->titre = $titre;
-        $photo->id = count(Photo::all()) + 1;
-        $photo->url = $url;
-        $photo->note = 0;
-        $photo->album_id = $albums;
-        $photo->tags()->attach($tags);
-        $photo->save();
-        return redirect()->route('index');
+    $titre = $request->input('titre');
+    $url = $request->input('url');
+    $tags = $request->input('tag');
+    $album = $request->input('album');
+    
+    $photo = new Photo();
+    $photo->titre = $titre;
+    $photo->id = count(Photo::all()) + 1;
+    $photo->url = $url;
+    $photo->note = rand(0, 5);
+    $photo->album_id = $album;
+    $photo->tags()->attach($tags);
+
+    $photo->save();
+    
+    return redirect()->route('index');
     }
+
+    
 
     function explorer()
     {
+        $tags = Tag::all();
+        $albums = Album::all();
         $photos = Photo::all();
-        return view('explorer', ['photos' => $photos]);
+        return view('explorer', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
     }
 
     function explorerT(Request $request)
     {
+        $tags = Tag::all();
+        $albums = Album::all();
         $search = $request->input('search');
         $photos = Photo::query()
             ->where('note', 'LIKE', "%{$search}%")
             ->get();
-        return view('explorer', ['photos' => $photos]);
+        return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
     }
 
     function search(Request $request)
@@ -105,6 +115,24 @@ class Render extends UserController
         return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
     }
 
+    function searchAlbums(Request $request)
+    {
+        $search = $request->input('search');
+        $albums = Album::query()
+            ->where('titre', 'LIKE', "%{$search}%")
+            ->get();
+        return view('albums', ['albums' => $albums]);
+    }
+
+    function searchAlbumsDate(Request $request)
+    {
+    $order = $request->input('order', 'asc');
+    
+    $albums = Album::orderBy('creation', $order)->get();
+    
+    return view('albums', ['albums' => $albums]);
+    }
+
     function displayAlbums()
     {
         $photos = Photo::all();
@@ -114,9 +142,11 @@ class Render extends UserController
 
     function displayAlbum($id)
     {
+        $albums = Album::all();
+        $tags = Tag::all();
         $album = Album::find($id);
         $photos = $album->photos;
-        return view('album', ['album' => $album, 'photos' => $photos]);
+        return view('album', ['album' => $album, 'photos' => $photos, 'tags' => $tags, 'albums' => $albums]);
     }
 
     function deletePhoto($id)

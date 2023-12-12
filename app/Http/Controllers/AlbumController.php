@@ -37,7 +37,7 @@ class AlbumController extends UserController
         $album->creation = now();
         $album->user()->associate($request->user());
         $album->save();
-        return redirect()->route('index');
+        return redirect()->route('NewPhoto');
     }
 
     /**
@@ -68,13 +68,5 @@ class AlbumController extends UserController
      */
     public function destroy(Album $album)
     {
-    }
-
-    function AjouterPhoto(Request $request)
-    {
-        $photo = $request->input('photo');
-        $album = $request->input('album');
-        $album->photos()->attach($photo);
-        return redirect()->route('index');
     }
 }
