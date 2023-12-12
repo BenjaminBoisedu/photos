@@ -317,3 +317,9 @@ input,
 .searchDate button:hover {
     background-color: #444;
 }
+
+
+.album-container p{
+    font-size: .8rem;
+    color: #777;
+}
