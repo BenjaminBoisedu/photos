@@ -16,6 +16,8 @@ class Render extends UserController
         $photos = Photo::all();
         $albums = Album::all();
         $tags = Tag::all();
+        // random
+        $photos = Photo::inRandomOrder()->get();
         return view('index', ['photos' => $photos, 'albums' => $albums, 'tags' => $tags]);
     }
 
@@ -31,7 +33,8 @@ class Render extends UserController
             'id',
             'nom'
         );
-        return view('NewPhoto', ['tags' => $tags]);
+        $albums = Album::all();
+        return view('NewPhoto', ['tags' => $tags, 'albums' => $albums]);
     }
 
     function NewTag(Request $request)
@@ -66,11 +69,15 @@ class Render extends UserController
         $titre = $request->input('titre');
         $url = $request->input('url');
         $tags = $request->input('tags');
+        $albums = $request->input('album');
+
         $photo = new Photo();
         $photo->titre = $titre;
+        $photo->id = count(Photo::all()) + 1;
         $photo->url = $url;
-        $photo->tags = $tags;
-        $photo->album()->associate($request->user());
+        $photo->note = 0;
+        $photo->album_id = $albums;
+        $photo->tags()->attach($tags);
         $photo->save();
         return redirect()->route('index');
     }

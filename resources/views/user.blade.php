@@ -20,19 +20,20 @@
                 <h1>{{$user->name}}</h1>
             </div>
         </div>
-        <div class="photos">
-            @foreach($photo as $img)
-            <div class="photo">
-                <a href="{{route('photo', ['id' => $img->id])}}">
-                    <img src="{{$img->url}}" alt="">
-                </a>
-                <h1>
-                    {{$img->titre}}
-                </h1>
+        <div class="album">
+            <div class="title">
+                <h1>Albums</h1>
             </div>
-            @endforeach
+            <div class="albums">
+                @foreach ($albums as $album)
+                <div class="album">
+                    <a href="{{route('album', ['id' => $album->id])}}">
+                        <h2>{{$album->titre}}</h2>
+                    </a>
+                </div>
+                @endforeach
+            </div>
         </div>
-    </div>
     </div>
     @endsection
 </body>

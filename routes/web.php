@@ -48,3 +48,5 @@ Route::post('/NewTag', [App\Http\Controllers\Render::class, 'NewTag'])->name('Ne
 
 Route::get('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'create'])->name('NewAlbum')->middleware('auth');
 Route::post('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'store'])->name('NewAlbumT')->middleware('auth');
+
+Route::get('/album/{id}', [App\Http\Controllers\AlbumController::class, 'show'])->name('album')->middleware('auth');

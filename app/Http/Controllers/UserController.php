@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Album;
+use App\Models\Photo;
 // Hashed
 use Illuminate\Support\Facades\Hash;
 
@@ -70,7 +71,8 @@ class UserController extends BaseController
     function displayUser($id)
     {
         $user = User::find($id);
-        $photo = DB::table('photos')->where('album_id', $id)->get();
-        return view('user', ['user' => $user, 'photo' => $photo]);
+        $albums = Album::all();
+        $photos = Photo::all();
+        return view('user', ['user' => $user, 'albums' => $albums, 'photos' => $photos]);
     }
 }

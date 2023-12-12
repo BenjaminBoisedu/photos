@@ -44,7 +44,8 @@ class AlbumController extends UserController
      */
     public function show(Album $album)
     {
-        //
+        $photos = $album->photos;
+        return view('album', ['album' => $album, 'photos' => $photos]);
     }
 
     /**
