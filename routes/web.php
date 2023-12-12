@@ -49,4 +49,10 @@ Route::post('/NewTag', [App\Http\Controllers\Render::class, 'NewTag'])->name('Ne
 Route::get('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'create'])->name('NewAlbum')->middleware('auth');
 Route::post('/NewAlbum', [App\Http\Controllers\AlbumController::class, 'store'])->name('NewAlbumT')->middleware('auth');
 
-Route::get('/album/{id}', [App\Http\Controllers\AlbumController::class, 'show'])->name('album')->middleware('auth');
+
+
+
+Route::get('/albums', [App\Http\Controllers\Render::class, 'displayAlbums'])->name('albums');
+Route::get('/album/{id}', [App\Http\Controllers\Render::class, 'displayAlbum'])->name('album')->middleware('auth');
+
+Route::delete('/deletePhoto/{id}', [App\Http\Controllers\Render::class, 'deletePhoto'])->name('deletePhoto')->middleware('auth');

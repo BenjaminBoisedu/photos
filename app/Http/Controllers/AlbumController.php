@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use App\Models\User;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class AlbumController extends UserController
@@ -44,8 +45,8 @@ class AlbumController extends UserController
      */
     public function show(Album $album)
     {
-        $photos = $album->photos;
-        return view('album', ['album' => $album, 'photos' => $photos]);
+        $photo = $album->photos;
+        return view('album', ['album' => $album, 'photo' => $photo]);
     }
 
     /**
