@@ -67,20 +67,11 @@
                         <input type="submit" value="Ajouter à l'album">
                     </form>
                 </div> --}}
-                <div class="album-container">
-                    @if($photos->isNotEmpty())
-                        <p>Album :</p>
-                            @foreach($photos as $photo)
-                                @if($photo->album)
-                                    <p>{{ $photo->album->titre }}</p>
-                                @else
-                                    <p>No album associated</p>
-                                @endif
-                            @endforeach
-                    @else
-                        <p>No photos available</p>
-                    @endif
-                </div>
+                {{-- <div class="album-container">
+                    @foreach ($img->album as $a)
+                    <p>{{$a}}</p>
+                    @endforeach
+                </div> --}}
                 
             </div>
             @endforeach

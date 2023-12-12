@@ -41,7 +41,7 @@
                     <a href="{{route('album', ['id' => $a->id])}}">
                         <h2 class="album-title">{{$a->titre}}</h2>
                     </a>
-                    <p>{{$a->creation}}</p>
+                    <p class="creation">{{$a->creation}}</p>
                 </div>
             </div>
             @endforeach

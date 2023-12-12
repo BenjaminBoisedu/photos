@@ -51,7 +51,7 @@
                         @endforeach
                     </div>
                     </div>
-                    <div class="album-container">
+                    {{-- <div class="album-container">
                         @if($photos->isNotEmpty())
                             <p>Album :</p>
                                 @foreach($photos as $photo)
@@ -64,7 +64,7 @@
                         @else
                             <p>No photos available</p>
                         @endif
-                    </div>
+                    </div> --}}
                     <div class="deleteAlbum">
                         <form action="{{route('deletePhoto', ['id' => $img->id])}}" method="POST">
                             @csrf

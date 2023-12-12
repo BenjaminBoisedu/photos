@@ -44,7 +44,7 @@ class Render extends UserController
         $tag = new Tag();
         $tag->nom = $nom;
         $tag->save();
-        return redirect()->route('NewPhoto');
+        return redirect()->route('Dashboard');
     }
 
     function showByTag($id)
